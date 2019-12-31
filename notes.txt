@@ -1,0 +1,95 @@
+#########
+# Step 1
+Code affected: none
+Created this file.
+
+#########
+# Step 2
+Code affected: all .java files
+Reformatted using the Google Java style formatter.
+
+#########
+# Step 3
+Code affected: Fish.turnAround
+Flaw: unnecessary if, leading to duplicate code.
+Fix: replaced if statement with a single assignment statement.
+
+#########
+# Step 4
+Created new super class: Item.java.
+Code affected:Bubble.java, Fish.java, Hungry Fish.java, Seaweed.java
+Flaw: inconsistent coordinate system
+Fix: create method "setLocation" in Item.java. Let other class inherit this method.
+Also fix other relevant code.
+
+#########
+# Step 5
+Created new child class: Fishes.java.
+Code affected:Fish.java, HungryFish.java, Fishes.java, FishTankManager.java
+Flaw: Both class has similar move() turnaround() lead to duplicate code. Fishes swim outside of the
+FishTank
+Fix: create a subclass Fishes that inherit Item, then make Fish and HungryFish inherit Fishes's
+method.Make GridHeight and GridWidth be private static, then add setter and getter.
+
+#########
+# Step 6
+Improve the description in Step 5
+Code affected: Bubble.java, Fishes.java, FishTankManage.java, Seaweed.java, Item.java
+Flaw: waste of time looping the 2D array myLittleFishes. This ArrayList also causes
+many duplicate code in FishTankManage.java.
+Fix: Create a private ArrayList to replace the 2D ArrayList. Transfer the method blowBubble to the
+     body of method update.
+     Create abstract method move in Item to decrease the number of casting in update.
+
+#########
+# Step 7
+Fix the grammar mistake in Step 6 description
+Code affected: Bubble.java, Fishes.java, FishTankManage.java, Item.java, Seaweed.java
+Flaw: gridWidth and gridHeight in FishTankManager should not be static.
+Fix: Change gridWidth and gridHeight to non-static. Adding 2 more parameter in method move.
+
+#########
+# Step 8
+Code affected: Fishes.java
+Flaw: Fishes do not move correctly. They don't turnaround after bump into wall cause. Swim backward.
+Also, bubbles are created at negative height.
+Fix: force fishes to turnaround after bump into wall. Fix the bug that fishes can swim to negative
+height.
+
+#########
+# Step 9
+Code affected: Fishes.java, FishTankManager.java
+Flaw: Bubble object still exists in memory even it goes out of the FishTank. No documentation explain
+what Fishes do when they bump the wall.
+Fix: Set bubble object to null when it goes to the surface or bump into wall, and garbage collect it.
+Adding documentation for fishes' move.
+
+#########
+# Step 10
+Create new item class: shrimp.java
+Code affected: Fishes.java, Fish.java, HungryFish.java
+Flaw: reverseAppearance can be inheritance from Fishes class
+Fix: Let reverseAppearance take one String parameter. Make this method work independent the
+appearance attribute.
+
+#########
+# Step 11
+Code affected: Shrimp.java, FishTankManager.java, Item.java
+Flaw: Many duplicate code in draw method of FishTankManager and many casting
+Fix: Create an abstract method in Item class. Complete the Shrimp class.
+
+#########
+# Step 12
+Code affected: Fish.java, Fishes.java, FishTankManager.java, HungryFish.java,
+Seaweed.java,Shrimp.java
+Flaw: Code smell in Seaweed.java. Dispensable instance variable leanRight. Also, many useless
+comment in other file.
+Fix: Merge leanRight and lR into one instance variable lR. Delete meaningless documentation make
+program looks cleaner.
+
+#########
+# Step 13
+Code affected: Bubble.java, Fish.java, FishTankManager.java, Item.java, Seaweed.java
+Flaw: Code smell: the action of blow bubble should be completed in Fishes class
+Fix: add one more parameter to move. Pass the ArrayList myLittleFishes to the move method.
+
